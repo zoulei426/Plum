@@ -4,12 +4,13 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <RootNamespace>Plum.Windows</RootNamespace>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Plum.Windows.Core</Title>
+    <PackageId>Z$(AssemblyName)</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AduSkin" Version="1.1.1.9" />
     <PackageReference Include="HandyControl" Version="3.4.0" />
-    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
     <PackageReference Include="MaterialDesignExtensions" Version="3.3.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.8.0" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.4" />
@@ -22,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shares\Plum.Shared\Plum.Shared.csproj" />
     <ProjectReference Include="..\Plum.Core\Plum.Core.csproj" />
     <ProjectReference Include="..\Plum.Data\Plum.Data.csproj" />
   </ItemGroup>

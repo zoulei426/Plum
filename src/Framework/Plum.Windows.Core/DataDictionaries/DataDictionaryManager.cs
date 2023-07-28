@@ -31,21 +31,21 @@ namespace Plum.Windows.DataDictionaries
 
                 var result = new Dictionary<string, string>();
 
-                try
-                {
-                    var dataDictionary = api.GetDataDictionaryByCodeAsync(code).Result;
+                //try
+                //{
+                //    var dataDictionary = api.GetDataDictionaryByCodeAsync(code).Result;
 
-                    foreach (var item in dataDictionary.Items.OrderBy(x => x.Code))
-                    {
-                        result.Add(item.Code, item.DisplayText);
-                    }
+                //    foreach (var item in dataDictionary.Items.OrderBy(x => x.Code))
+                //    {
+                //        result.Add(item.Code, item.DisplayText);
+                //    }
 
-                    dataDictionaries.Add(code, result);
-                }
-                catch (Exception ex)
-                {
-                    Serilog.Log.Error(ex.ToDetailString());
-                }
+                //    dataDictionaries.Add(code, result);
+                //}
+                //catch (Exception ex)
+                //{
+                //    Serilog.Log.Error(ex.ToDetailString());
+                //}
 
                 return result;
             }

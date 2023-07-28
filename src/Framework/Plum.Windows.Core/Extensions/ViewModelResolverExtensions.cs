@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Windows;
 
-namespace Plum.Windows.Extensions
+namespace Plum.Windows
 {
     /// <summary>
     /// ViewModelResolverExtension

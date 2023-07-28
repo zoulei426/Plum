@@ -3,7 +3,19 @@
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Plum.Windows.Controls</Title>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageId>Z$(AssemblyName)</PackageId>
+    <UserSecretsId>ebcef53e-7be5-49fa-bfb8-cceaedc34ad0</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Plum.Resources\Images\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Npoi.Mapper" Version="4.1.0" />

@@ -134,17 +134,17 @@ namespace Plum
             return expandoObjectList;
         }
 
-        //public static void AddFriendly<TKey, TValue>(this Dictionary<TKey, List<TValue>> dic, TKey key, TValue value)
-        //{
-        //    if (dic.ContainsKey(key))
-        //    {
-        //        dic[key].Add(value);
-        //    }
-        //    else
-        //    {
-        //        dic.Add(key, new List<TValue> { value });
-        //    }
-        //}
+        public static void AddFriendly<TKey, TValue>(this Dictionary<TKey, List<TValue>> dic, TKey key, TValue value)
+        {
+            if (dic.ContainsKey(key))
+            {
+                dic[key].Add(value);
+            }
+            else
+            {
+                dic.Add(key, new List<TValue> { value });
+            }
+        }
 
         #endregion Methods
     }

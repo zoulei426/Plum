@@ -1,5 +1,4 @@
-﻿using EasyAbp.Abp.DataDictionary.Dtos;
-using Plum.Windows.Consts;
+﻿using Plum.Windows.Consts;
 using Refit;
 using System.Threading.Tasks;
 
@@ -15,8 +14,8 @@ namespace Plum
 
         #region DataDictionary
 
-        [Get("/api/data-dictionary/data-dictionary/by-code")]
-        Task<DataDictionaryDto> GetDataDictionaryByCodeAsync(string code);
+        //[Get("/api/data-dictionary/data-dictionary/by-code")]
+        //Task<DataDictionaryDto> GetDataDictionaryByCodeAsync(string code);
 
         #endregion DataDictionary
     }
