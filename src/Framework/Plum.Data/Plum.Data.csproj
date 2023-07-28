@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Plum</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyAbp.Abp.DataDictionary.Application.Contracts" Version="1.4.0" />
+    <PackageReference Include="IdentityModel" Version="6.0.0" />
+    <PackageReference Include="NPOI" Version="2.6.0" />
+    <PackageReference Include="Npoi.Mapper" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shares\Plum.Shared\Plum.Shared.csproj" />
+    <ProjectReference Include="..\Plum.Core\Plum.Core.csproj" />
+  </ItemGroup>
+</Project>

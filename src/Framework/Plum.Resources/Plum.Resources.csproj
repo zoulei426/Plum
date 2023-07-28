@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\avatar-default.png" />
+    <None Remove="Images\chart_flow.png" />
+    <None Remove="Images\cloud.png" />
+    <None Remove="Images\loading01.gif" />
+    <None Remove="Images\loading02.gif" />
+    <None Remove="Images\loading03.gif" />
+    <None Remove="Images\loading04.gif" />
+    <None Remove="Images\loading05.gif" />
+    <None Remove="Images\loading06.gif" />
+    <None Remove="Images\loading07.gif" />
+    <None Remove="Images\loading08.gif" />
+    <None Remove="Images\loading09.gif" />
+    <None Remove="Images\loading10.gif" />
+    <None Remove="Images\loading11.gif" />
+    <None Remove="Images\loading12.gif" />
+    <None Remove="Images\loading13.gif" />
+    <None Remove="Images\loading14.gif" />
+    <None Remove="Images\login.jpg" />
+    <None Remove="Images\login_bgd_light_01.jpg" />
+    <None Remove="Images\login_bgd_light_02.jpg" />
+    <None Remove="Images\login_bgd_light_03.jpg" />
+    <None Remove="Images\login_bgd_light_04.jpg" />
+    <None Remove="Images\login_bgd_light_07.jpg" />
+    <None Remove="Images\login_bgd_light_08.jpg" />
+    <None Remove="Images\logo.ico" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\other_type.png" />
+    <None Remove="Images\unknown.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\avatar-default.png" />
+    <Resource Include="Images\chart_flow.png" />
+    <Resource Include="Images\cloud.png" />
+    <Resource Include="Images\loading01.gif" />
+    <Resource Include="Images\loading02.gif" />
+    <Resource Include="Images\loading03.gif" />
+    <Resource Include="Images\loading04.gif" />
+    <Resource Include="Images\loading05.gif" />
+    <Resource Include="Images\loading06.gif" />
+    <Resource Include="Images\loading07.gif" />
+    <Resource Include="Images\loading08.gif" />
+    <Resource Include="Images\loading09.gif" />
+    <Resource Include="Images\loading10.gif" />
+    <Resource Include="Images\loading11.gif" />
+    <Resource Include="Images\loading12.gif" />
+    <Resource Include="Images\loading13.gif" />
+    <Resource Include="Images\loading14.gif" />
+    <Resource Include="Images\login.jpg" />
+    <Resource Include="Images\login_bgd_light_01.jpg" />
+    <Resource Include="Images\login_bgd_light_02.jpg" />
+    <Resource Include="Images\login_bgd_light_03.jpg" />
+    <Resource Include="Images\login_bgd_light_04.jpg" />
+    <Resource Include="Images\login_bgd_light_07.jpg" />
+    <Resource Include="Images\login_bgd_light_08.jpg" />
+    <Resource Include="Images\logo.ico" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\other_type.png" />
+    <Resource Include="Images\unknown.jpeg" />
+  </ItemGroup>
+</Project>

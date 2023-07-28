@@ -1,0 +1,101 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:ctls="clr-namespace:Plum.Windows.Controls"
+                    xmlns:hc="https://handyorg.github.io/handycontrol">
+    <Style TargetType="{x:Type ctls:LazyListView}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignTextBoxBorder}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="ItemContainerStyle" Value="{Binding RelativeSource={RelativeSource Self}, Path=View, Converter={StaticResource MaterialDesignListViewItemContainerStyleConverter}}" />
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="False" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <!--<Setter Property="Template" Value="{Binding RelativeSource={RelativeSource Self}, Path=View, Converter={StaticResource MaterialDesignListViewTemplateConverter}}" />-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctls:LazyListView}">
+                    <Border Padding="{TemplateBinding Padding}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <!--  ToolBar  -->
+                            <Grid Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Style="{DynamicResource MaterialDesignToolButton}" IsDefault="True">
+                                        <md:PackIcon Kind="Search" Opacity=".56" />
+                                    </Button>
+                                    <TextBox Grid.Column="1"
+                                             Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=ctls:LazyListView}}"
+                                             Width="200"
+                                             Margin="8,0,0,0"
+                                             VerticalAlignment="Center"
+                                             md:HintAssist.Hint="搜索"
+                                             md:TextFieldAssist.DecorationVisibility="Hidden"
+                                             BorderThickness="0" />
+                                </Grid>
+                                <StackPanel Grid.Column="1"
+                                            HorizontalAlignment="Right"
+                                            Orientation="Horizontal">
+                                    <Button Content="{md:PackIcon Refresh}"
+                                            Command="{Binding RefreshCommand, RelativeSource={RelativeSource AncestorType=ctls:LazyListView}}"
+                                            CommandParameter="{Binding ., RelativeSource={RelativeSource AncestorType=ctls:LazyListView}}"
+                                            Style="{DynamicResource MaterialDesignToolForegroundButton}"
+                                            ToolTip="刷新" />
+                                </StackPanel>
+                            </Grid>
+                            <!--  ToolBar End  -->
+                            <ScrollViewer x:Name="sv" Grid.Row="1"
+                                          ctls:ScrollViewerMonitor.AtEndCommand="{Binding LazyLoadCommand, RelativeSource={RelativeSource AncestorType=ctls:LazyListView}}"
+                                          ctls:ScrollViewerMonitor.AtEndCommandParameter="{Binding ., RelativeSource={RelativeSource AncestorType=ctls:LazyListView}}"
+                                          Visibility="{Binding IsBusy, Converter={StaticResource NotBoolToVisibilityConverter}, RelativeSource={RelativeSource AncestorType=ctls:LazyListView}}">
+                                <!--<Grid>-->
+
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <!--<TextBlock Text="{Binding LoadTip, RelativeSource={RelativeSource AncestorType=ctls:LazyListView}}" />-->
+                                <!--</Grid>-->
+                            </ScrollViewer>
+                            <Border Grid.Row="1" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource AncestorType=ctls:LazyListView}}">
+                                <ProgressBar HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                             RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                             UseLayoutRounding="True"
+                                             IsIndeterminate="True"
+                                             Value="0" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsGrouping" Value="True">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

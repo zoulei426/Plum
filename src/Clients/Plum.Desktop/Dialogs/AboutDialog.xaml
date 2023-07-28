@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Plum.Dialogs.AboutDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Plum.Dialogs"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Tag="关于"
+             Style="{StaticResource PlumConfirmDialogStyle}"
+             mc:Ignorable="d">
+    <StackPanel Grid.Row="1"
+                Margin="20"
+                Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Image Grid.Column="0"
+                   Width="60"
+                   Height="60"
+                   Source="pack://application:,,,/Plum.Resources;component/Images/logo.png"
+                   Stretch="Uniform" />
+            <TextBlock Text="Plum"
+                       Margin="20,0"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource MaterialDesignHeadline5TextBlock}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+
+            <TextBlock Text="版本"
+                       Margin="40,10,0,0"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}" />
+            <TextBlock Text="{Binding Version}"
+                       Margin="5,10,0,0"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}" />
+            <Button Content="{md:PackIcon UploadMultiple}"
+                    Command="{Binding CheckCommand}"
+                    Height="20"
+                    Margin="5,10,0,0"
+                    Padding="5,0"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    ToolTip="检查更新"
+                    Cursor="Hand" />
+        </StackPanel>
+        <TextBlock Text="© Plum"
+                   Margin="40,10,0,0"
+                   Style="{StaticResource MaterialDesignBody1TextBlock}" />
+        <TextBlock Text="保留所有权利"
+                   Margin="40,10,0,0"
+                   Style="{StaticResource MaterialDesignBody1TextBlock}" />
+        <TextBlock Text="技术单位：Plum"
+                   Margin="40,10,0,0"
+                   Style="{StaticResource MaterialDesignBody1TextBlock}" />
+        <TextBlock Text="技术咨询QQ群：Plum"
+                   Margin="40,10,0,0"
+                   Style="{StaticResource MaterialDesignBody1TextBlock}" />
+    </StackPanel>
+</UserControl>

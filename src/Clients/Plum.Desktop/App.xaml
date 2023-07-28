@@ -1,0 +1,43 @@
+﻿<prism:PrismApplication x:Class="Plum.Desktop.App"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:local="clr-namespace:Plum.Desktop"
+                        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                        xmlns:prism="http://prismlibrary.com/"
+                        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!--<sys:Double x:Key="Default_FontSize">14</sys:Double>
+            <sys:Boolean x:Key="Default_SnapsToDevicePixels">False</sys:Boolean>
+            <FontFamily x:Key="FontAwesome">/Panuon.UI.Silver;component/Resources/#fontawesome</FontFamily>-->
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <!--  HandyControl  -->
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+
+                <!--  MaterialDesignTheme  -->
+
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+
+                <!--  Panuon.UI.Silver  -->
+                <!--<ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />-->
+
+                <!--  Plum Theme  -->
+                <ResourceDictionary Source="pack://application:,,,/Plum.Windows.Controls;component/Themes/Plum.Converters.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Plum.Windows.Controls;component/Themes/Plum.Brushs.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Plum.Windows.Controls;component/Themes/Plum.Buttons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Plum.Windows.Controls;component/Themes/Plum.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--  清除HandyControl影响  -->
+            <Style TargetType="Path" BasedOn="{x:Null}" />
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

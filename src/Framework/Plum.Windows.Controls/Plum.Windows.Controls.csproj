@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npoi.Mapper" Version="4.1.0" />
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plum.Data\Plum.Data.csproj" />
+    <ProjectReference Include="..\Plum.Resources\Plum.Resources.csproj" />
+    <ProjectReference Include="..\Plum.Windows.Core\Plum.Windows.Core.csproj" />
+  </ItemGroup>
+</Project>

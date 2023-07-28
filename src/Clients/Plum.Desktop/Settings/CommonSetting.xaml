@@ -1,0 +1,33 @@
+﻿<TabItem x:Class="Plum.Settings.CommonSetting"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:local="clr-namespace:Plum.Settings"
+         xmlns:prism="http://prismlibrary.com/"
+         prism:ViewModelLocator.AutoWireViewModel="True"
+         d:DesignHeight="450"
+         d:DesignWidth="800"
+         Header="通用设置"
+         mc:Ignorable="d">
+    <Grid Margin="34,24">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="32" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="自动检查更新"
+                   Margin="0,22" />
+
+        <ToggleButton Grid.Row="1" Grid.Column="2"
+                      IsChecked="{Binding AutoCheckUpdate}"
+                      HorizontalAlignment="Left" />
+    </Grid>
+</TabItem>
