@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Plum.Modules.Libraries.Data
 {
-    internal interface ILibraryRepository
+    public interface ILibraryRepository
     {
         long Count(string filter = null);
 

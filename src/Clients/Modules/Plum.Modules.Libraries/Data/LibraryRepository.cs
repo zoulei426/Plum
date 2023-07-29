@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace Plum.Modules.Libraries.Data
 {
-    internal class LibraryRepository : ILibraryRepository
+    public class LibraryRepository : ILibraryRepository
     {
+        public LibraryRepository()
+        {
+        }
+
         public long Count(string filter = null)
         {
             return 1;

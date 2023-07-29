@@ -11,22 +11,25 @@
 		<DocumentationFile></DocumentationFile>
 		<OutputPath>..\Build\bin\Debug\</OutputPath>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Properties\**" />
+	  <EmbeddedResource Remove="Properties\**" />
+	  <None Remove="Properties\**" />
+	  <Page Remove="Properties\**" />
+	</ItemGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="Autoupdater.NET.Official" Version="1.8.3" />
 		<PackageReference Include="IdentityModel" Version="6.1.0" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
-		<PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
+		<PackageReference Include="Refit.HttpClientFactory" Version="7.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-		<PackageReference Include="Volo.Abp.Account.Web" Version="7.0.3" />
+		<PackageReference Include="Volo.Abp.Account.Web" Version="7.3.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Framework\Plum.Windows.Apps\Plum.Windows.Apps.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Properties\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -36,6 +39,10 @@
 	  <None Update="Resources\zh-CN.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Panels\" />
 	</ItemGroup>
 
 

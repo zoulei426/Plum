@@ -14,7 +14,7 @@ using static Plum.Modules.Libraries.Events.EventCenter;
 
 namespace Plum.Modules.Libraries.Components
 {
-    internal class LibraryListPanelViewModel :
+    public class LibraryListPanelViewModel :
          PagableViewModel<
              LibraryListPanel,
              LibraryDvo,
@@ -31,7 +31,8 @@ namespace Plum.Modules.Libraries.Components
         {
             base.OnLoaded(view);
 
-            DataSource = new LibraryPagerProvider(Container.Resolve<ILibraryRepository>());
+            //DataSource = new LibraryPagerProvider(Container.Resolve<ILibraryRepository>());
+            DataSource = new LibraryPagerProvider(new LibraryRepository());
 
             pdg = view.FindName("pdg") as PagableDataGrid;
 

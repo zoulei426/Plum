@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Plum.Modules.Libraries.Events
 {
-    internal class EventCenter
+    public class EventCenter
     {
-        internal class SelectedLibraryChangedEvent : PubSubEvent<LibraryDvo>
+        public class SelectedLibraryChangedEvent : PubSubEvent<LibraryDvo>
         {
         }
 
-        internal class RefreshLibraryEvent : PubSubEvent
+        public class RefreshLibraryEvent : PubSubEvent
         {
         }
     }

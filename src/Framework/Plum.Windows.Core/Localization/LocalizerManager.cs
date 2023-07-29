@@ -86,6 +86,8 @@ namespace Plum.Windwos.Localization
         /// </summary>
         private void OnCurrentUICultureChanged() => CurrentUICultureChanged?.Invoke();
 
+        private static string BASENAME_SEPARATOR = ".";
+
         /// <summary>
         /// Gets the specified key.
         /// </summary>
@@ -93,7 +95,13 @@ namespace Plum.Windwos.Localization
         /// <returns></returns>
         public string Get(string key)
         {
-            var localizer = localizerFactory.Create("", "");
+            var baseName = string.Empty;
+            if (key.IndexOf(BASENAME_SEPARATOR) > 0)
+            {
+                baseName = key.Substring(0, key.IndexOf(BASENAME_SEPARATOR));
+                key = key.Substring(key.IndexOf(BASENAME_SEPARATOR) + 1);
+            }
+            var localizer = localizerFactory.Create(baseName, string.Empty);
             return localizer[key].Value;
         }
     }

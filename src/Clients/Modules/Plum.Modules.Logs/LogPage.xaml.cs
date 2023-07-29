@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace iMedical.Settings
+namespace Plum.Modules.Logs
 {
     /// <summary>
-    /// CommonSetting.xaml 的交互逻辑
+    /// LogPage.xaml 的交互逻辑
     /// </summary>
-    public partial class CommonSetting : UserControl
+    public partial class LogPage : TabItem
     {
-        public CommonSetting()
+        public LogPage()
         {
             InitializeComponent();
         }

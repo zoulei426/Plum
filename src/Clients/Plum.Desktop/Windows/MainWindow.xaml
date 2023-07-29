@@ -31,7 +31,7 @@
 
                 <TabControl Grid.Column="0"
                             Grid.ColumnSpan="2"
-                            prism:RegionManager.RegionName="{x:Static consts:SystemRegionNames.MainTabRegion}"
+                            prism:RegionManager.RegionName="{x:Static consts:SystemRegionNames.MAIN}"
                             SelectedIndex="0"
                             Style="{StaticResource MainTabControlStyle}"
                             ItemContainerStyle="{StaticResource MainTabItemStyle}" />
@@ -57,14 +57,14 @@
                         </StackPanel>
                     </ToggleButton>
 
-                    <panels:SettingsPopup Width="284"
+                    <!--<panels:SettingsPopup Width="284"
                                           Height="Auto"
                                           IsOpen="{Binding IsChecked, ElementName=SettingsToggleButton}"
                                           StaysOpen="False"
                                           PlacementTarget="{Binding ElementName=SettingsToggleButton}"
                                           Placement="Right"
                                           VerticalOffset="-283"
-                                          PopupAnimation="Fade" />
+                                          PopupAnimation="Fade" />-->
                 </StackPanel>
             </Grid>
         </md:DialogHost>

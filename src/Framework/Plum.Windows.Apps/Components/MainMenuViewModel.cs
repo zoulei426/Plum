@@ -1,4 +1,5 @@
 ﻿using Plum.Validation;
+using Plum.Windows.Apps.Account;
 using Plum.Windows.Mvvm;
 using Plum.Windows.Notify;
 using Prism.Commands;
@@ -21,7 +22,7 @@ namespace Plum.Windows.Apps.Components
     {
         #region Properties
 
-        //public PlumUser User { get; set; }
+        public PlumUser User { get; set; }
 
         #endregion Properties
 
@@ -29,7 +30,7 @@ namespace Plum.Windows.Apps.Components
 
         private MainMenu view;
 
-        private IPlumApi api;
+        private IPlumAccountApi api;
 
         #endregion Fields
 
@@ -53,7 +54,7 @@ namespace Plum.Windows.Apps.Components
 
         public MainMenuViewModel(IContainerExtension container) : base(container)
         {
-            //User = new PlumUser();
+            User = new PlumUser();
         }
 
         #endregion Ctor
@@ -62,7 +63,7 @@ namespace Plum.Windows.Apps.Components
 
         protected override void RegisterCommands()
         {
-            //ProfileCommand = new DelegateCommand(ExecuteChangeProfile);
+            ProfileCommand = new DelegateCommand(ExecuteChangeProfile);
 
             SettingsCommand = new DelegateCommand(async () => { await ShowDialog<SettingsDialog>(); });
 
@@ -88,15 +89,20 @@ namespace Plum.Windows.Apps.Components
         public async void OnLoaded(MainMenu view)
         {
             this.view = view;
-            //api = Container.Resolve<IPlumApi>();
-
-            //var profile = await api.GetMyProfileAsync().RunApi();
-            //User.CopyPropertiesFrom(profile);
+            if (Container.IsRegistered(typeof(IPlumAccountApi)))
+            {
+                api = Container.Resolve<IPlumAccountApi>();
+                User = await api.GetMyProfileAsync().RunApi();
+            }
+            else
+            {
+                User = PlumUser.Admin();
+            }
         }
 
         public void OnUnloaded(MainMenu view)
         {
-            //User = null;
+            User = null;
         }
 
         protected override async Task ShowDialog<TView>(string title = null, IDialogParameters parameters = null, Action<IDialogResult> callback = null, object dialogIdentifier = null)
@@ -107,40 +113,40 @@ namespace Plum.Windows.Apps.Components
 
         #region Methods - Private
 
-        //private async void ExecuteChangeProfile()
-        //{
-        //    var user = new UserDvo(Container.Resolve<IValidatorProvider>());
-        //    user.CopyPropertiesFrom(User);
+        private async void ExecuteChangeProfile()
+        {
+            //    var user = new UserDvo(Container.Resolve<IValidatorProvider>());
+            //    user.CopyPropertiesFrom(User);
 
-        //    await ShowDialog<ProfileDialog>($"个人信息", new DialogParameters { { "User", user } }, async args =>
-        //    {
-        //        if (args.Result == ButtonResult.OK || args.Result == ButtonResult.Yes)
-        //        {
-        //            var result = args.Parameters.GetValue<UserDvo>("User");
-        //            var updateProfile = result.ConvertTo<UpdateProfileDto>();
-        //            var profile = await api.UpdateMyProfileAsync(updateProfile).RunApi();
-        //            if (profile is not null)
-        //            {
-        //                User.CopyPropertiesFrom(profile);
-        //                Notifier.Success("个人信息更新成功");
-        //            }
+            //    await ShowDialog<ProfileDialog>($"个人信息", new DialogParameters { { "User", user } }, async args =>
+            //    {
+            //        if (args.Result == ButtonResult.OK || args.Result == ButtonResult.Yes)
+            //        {
+            //            var result = args.Parameters.GetValue<UserDvo>("User");
+            //            var updateProfile = result.ConvertTo<UpdateProfileDto>();
+            //            var profile = await api.UpdateMyProfileAsync(updateProfile).RunApi();
+            //            if (profile is not null)
+            //            {
+            //                User.CopyPropertiesFrom(profile);
+            //                Notifier.Success("个人信息更新成功");
+            //            }
 
-        //            var changePassword = args.Parameters.GetValue<ChangePasswordDvo>("ChangePassword");
-        //            if (changePassword is null ||
-        //                changePassword.CurrentPassword.IsNullOrEmpty() ||
-        //                changePassword.NewPassword.IsNullOrEmpty())
-        //            {
-        //                return;
-        //            }
+            //            var changePassword = args.Parameters.GetValue<ChangePasswordDvo>("ChangePassword");
+            //            if (changePassword is null ||
+            //                changePassword.CurrentPassword.IsNullOrEmpty() ||
+            //                changePassword.NewPassword.IsNullOrEmpty())
+            //            {
+            //                return;
+            //            }
 
-        //            var success = await api.ChangePasswordAsync(changePassword.ConvertTo<ChangePasswordInput>()).RunApi();
-        //            if (success)
-        //            {
-        //                Notifier.Success("密码更新成功");
-        //            }
-        //        }
-        //    });
-        //}
+            //            var success = await api.ChangePasswordAsync(changePassword.ConvertTo<ChangePasswordInput>()).RunApi();
+            //            if (success)
+            //            {
+            //                Notifier.Success("密码更新成功");
+            //            }
+            //        }
+            //    });
+        }
 
         #endregion Methods - Private
 

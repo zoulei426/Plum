@@ -4,7 +4,7 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+	<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,15 +12,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\libs.en-US.json">
+    <None Update="Resources\logs.en-US.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\libs.zh-CN.json">
+    <None Update="Resources\logs.zh-CN.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="xcopy  &quot;$(TargetPath)&quot; &quot;$(SolutionDir)src\Clients\Build\$(OutDir)Modules\&quot; /s /e /y&#xD;&#xA;xcopy  &quot;$(TargetDir)\Resources&quot; &quot;$(SolutionDir)src\Clients\Build\$(OutDir)Resources\&quot; /s /e /y" />
-	</Target>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+  	<Exec Command="xcopy  &quot;$(TargetPath)&quot; &quot;$(SolutionDir)src\Clients\Build\$(OutDir)Modules\&quot; /s /e /y&#xD;&#xA;xcopy  &quot;$(TargetDir)\Resources&quot; &quot;$(SolutionDir)src\Clients\Build\$(OutDir)Resources\&quot; /s /e /y" />
+  </Target>
+	
 </Project>

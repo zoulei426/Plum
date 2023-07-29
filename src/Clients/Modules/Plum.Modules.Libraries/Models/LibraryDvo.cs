@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Plum.Modules.Libraries.Models
 {
     [AddINotifyPropertyChangedInterface]
-    internal class LibraryDvo : DataViewObject
+    public class LibraryDvo : DataViewObject
     {
         public string Name { get; set; }
     }

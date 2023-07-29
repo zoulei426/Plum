@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Plum.Modules.Libraries.Data
 {
-    internal class LibraryPagerProvider : IDataPagerProvider
+    public class LibraryPagerProvider : IDataPagerProvider
     {
         private ILibraryRepository libRepo;
 

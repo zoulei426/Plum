@@ -7,6 +7,7 @@ using Prism.Modularity;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -24,7 +25,7 @@ namespace Plum.Modules.Libraries
 
         public override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterInstance(typeof(LibraryRepository));
+            Container.RegisterType(typeof(LibraryRepository), typeof(ILibraryRepository));
 
             var currentAssembly = Assembly.GetAssembly(this.GetType());
 

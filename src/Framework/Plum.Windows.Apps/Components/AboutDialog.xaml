@@ -16,35 +16,36 @@
     <StackPanel Grid.Row="1"
                 Margin="20"
                 Orientation="Vertical">
-        <StackPanel Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <Image Grid.Column="0"
                    Width="60"
                    Height="60"
                    Source="pack://application:,,,/Plum.Resources;component/Images/logo.png"
                    Stretch="Uniform" />
-            <TextBlock Text="Plum"
+
+        </StackPanel>
+        <StackPanel Margin="5" HorizontalAlignment="Center">
+            <TextBlock Text="{i18n:Localizer AppFullName}"
                        Margin="20,0"
                        VerticalAlignment="Center"
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-
-            <TextBlock Text="版本"
-                       Margin="40,10,0,0"
-                       Style="{StaticResource MaterialDesignBody1TextBlock}" />
-            <TextBlock Text="{Binding Version}"
-                       Margin="5,10,0,0"
-                       Style="{StaticResource MaterialDesignBody1TextBlock}" />
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="{Binding Path=Version, StringFormat=V{0}}" Style="{StaticResource MaterialDesignBody1TextBlock}" />
             <Button Content="{md:PackIcon UploadMultiple}"
                     Command="{Binding CheckCommand}"
                     Height="20"
-                    Margin="5,10,0,0"
+                    Margin="5,0,0,0"
                     Padding="5,0"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                    ToolTip="检查更新"
+                    ToolTip="{i18n:Localizer Check Update}"
                     Cursor="Hand" />
         </StackPanel>
-        <TextBlock Text="© Plum"
+        <StackPanel Height="50" />
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Text="{i18n:Localizer Copyright}" Style="{StaticResource MaterialDesignBody2TextBlock}" />
+        </StackPanel>
+        <!--<TextBlock Text="© Plum"
                    Margin="40,10,0,0"
                    Style="{StaticResource MaterialDesignBody1TextBlock}" />
         <TextBlock Text="保留所有权利"
@@ -55,6 +56,6 @@
                    Style="{StaticResource MaterialDesignBody1TextBlock}" />
         <TextBlock Text="技术咨询QQ群：Plum"
                    Margin="40,10,0,0"
-                   Style="{StaticResource MaterialDesignBody1TextBlock}" />
+                   Style="{StaticResource MaterialDesignBody1TextBlock}" />-->
     </StackPanel>
 </UserControl>

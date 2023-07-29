@@ -1,7 +1,9 @@
 {
-  "Hello": "你好",
+  "AppName": "iMedical",
+  "AppFullName": "iMedical 客户端",
   "Confirm": "确认",
   "Cancel": "取消",
+  "Refresh": "刷新",
   "Username": "用户名",
   "Password": "密码",
   "Email": "邮箱",
@@ -29,5 +31,11 @@
   "Dark": "暗色",
   "Language": "语言",
   "Theme": "主题",
-  "Basic": "基础"
+  "Basic": "基础",
+  "Check Update": "检查更新",
+  "Copyright": "Copyright © 2023 iMedical 版权所有",
+  "Please enter a search phrase": "请输入关键字进行搜索",
+  "Total": "共",
+  "items": "项",
+  "per page": "项每页"
 }

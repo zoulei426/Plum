@@ -13,7 +13,7 @@
              Style="{StaticResource PlumConfirmDialogStyle}"
              mc:Ignorable="d">
     <Grid Margin="10,0,10,10">
-        <TabControl prism:RegionManager.RegionName="{x:Static consts:SystemRegionNames.SettingsTabRegion}"
+        <TabControl prism:RegionManager.RegionName="{x:Static consts:SystemRegionNames.SETTINGS}"
                     Style="{StaticResource {x:Type TabControl}}"
                     ItemContainerStyle="{StaticResource {x:Type TabItem}}" />
     </Grid>

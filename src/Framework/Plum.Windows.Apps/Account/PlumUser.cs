@@ -1,12 +1,12 @@
 ﻿using PropertyChanged;
 using System;
 
-namespace Plum.Users
+namespace Plum.Windows.Apps.Account
 {
     [AddINotifyPropertyChangedInterface]
     public class PlumUser
     {
-        #region Base properties
+        #region properties
 
         public virtual Guid? TenantId { get; set; }
 
@@ -23,13 +23,21 @@ namespace Plum.Users
         public virtual string PhoneNumber { get; set; }
 
         public virtual bool PhoneNumberConfirmed { get; set; }
-
-        #endregion Base properties
-
         public string AvatarUrl { get; set; }
+
+        #endregion properties
 
         public PlumUser()
         {
+        }
+
+        public static PlumUser Admin()
+        {
+            return new PlumUser
+            {
+                UserName = "admin",
+                Name = "管理员"
+            };
         }
     }
 }

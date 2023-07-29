@@ -10,7 +10,7 @@
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:i18n="clr-namespace:Plum.Windwos.Localization;assembly=Plum.Windows.Core"
         xmlns:components="clr-namespace:Plum.Windows.Apps.Components"
-        Title="iMedical"
+        Title="{i18n:Localizer AppName}"
         Width="1350"
         Height="800"
         MinWidth="720"

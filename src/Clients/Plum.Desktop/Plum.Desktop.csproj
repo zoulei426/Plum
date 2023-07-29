@@ -26,12 +26,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autoupdater.NET.Official" Version="1.7.7" />
+    <PackageReference Include="Autoupdater.NET.Official" Version="1.8.3" />
     <PackageReference Include="IdentityModel" Version="6.1.0" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
-    <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="7.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-    <PackageReference Include="Volo.Abp.Account.Web" Version="7.0.3" />
+    <PackageReference Include="Volo.Abp.Account.Web" Version="7.3.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -44,30 +44,30 @@ namespace Plum.Windows.Controls.Dialog
 
         private void ExecuteExport()
         {
-            ShowSaveFileDialog(
-                $"{ObejctName}项目质检报告_{DateTime.Now:yyyy_MM_dd}",
-                "Excel文件(*.xls,*.xlsx)|*.xls;*.xlsx",
-                async (dialogResult) =>
-                {
-                    if (dialogResult.Result == ButtonResult.OK)
-                    {
-                        Notifier.Info($"开始导出质检报告");
+            //ShowSaveFileDialog(
+            //    $"{ObejctName}项目质检报告_{DateTime.Now:yyyy_MM_dd}",
+            //    "Excel文件(*.xls,*.xlsx)|*.xls;*.xlsx",
+            //    async (dialogResult) =>
+            //    {
+            //        if (dialogResult.Result == ButtonResult.OK)
+            //        {
+            //            Notifier.Info($"开始导出质检报告");
 
-                        var saveFile = (dialogResult.Parameters as FileDialogParameters).FileName;
-                        saveFile = PathTool.GetNewFileName(saveFile);
+            //            var saveFile = (dialogResult.Parameters as FileDialogParameters).FileName;
+            //            saveFile = PathTool.GetNewFileName(saveFile);
 
-                        await Task.Run(() =>
-                        {
-                            var mapper = new Mapper();
-                            IEnumerable<dynamic> objs = (IEnumerable<dynamic>)ItemsSource;
-                            mapper.Put(objs);
+            //            await Task.Run(() =>
+            //            {
+            //                var mapper = new Mapper();
+            //                IEnumerable<dynamic> objs = (IEnumerable<dynamic>)ItemsSource;
+            //                mapper.Put(objs);
 
-                            mapper.Save(saveFile);
-                        });
+            //                mapper.Save(saveFile, true);
+            //            });
 
-                        Notifier.Success($"质检报告导出成功");
-                    }
-                });
+            //            Notifier.Success($"质检报告导出成功");
+            //        }
+            //    });
         }
 
         public override void OnLoaded()
