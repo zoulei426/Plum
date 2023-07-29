@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace iMedical.Properties {
+namespace Plum.Windows.Apps.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

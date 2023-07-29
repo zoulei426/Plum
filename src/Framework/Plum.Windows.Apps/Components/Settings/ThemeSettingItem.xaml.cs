@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace iMedical.Windows
+namespace Plum.Windows.Apps.Components.Settings
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// ThemeSettingItem.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ThemeSettingItem : TabItem
     {
-        public MainWindow()
+        public ThemeSettingItem()
         {
             InitializeComponent();
         }

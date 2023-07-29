@@ -46,7 +46,7 @@ namespace Plum.Windows
 
         public void OnLoaded()
         {
-            RegionManager.RegisterViewWithRegion(SystemRegionNames.SettingsTabRegion, typeof(CommonSetting));
+            RegionManager.RegisterViewWithRegion(SystemRegionNames.SETTINGS, typeof(CommonSetting));
 
             var moduleManager = Container.Resolve<IModuleManager>();
 

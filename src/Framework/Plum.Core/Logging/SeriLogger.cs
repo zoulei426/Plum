@@ -43,5 +43,10 @@
         {
             Serilog.Log.Error(message, propertyValue);
         }
+
+        public void CloseAndFlush()
+        {
+            Serilog.Log.CloseAndFlush();
+        }
     }
 }

@@ -283,7 +283,7 @@ namespace Plum.Windows.Controls
 
             Dispatcher.Invoke(new Action(() =>
             {
-                TotalCount = pagedResult.TotalCount;
+                TotalCount = pagedResult.Count;
 
                 PageCount = (int)((TotalCount + PageSize - 1) / PageSize);
 

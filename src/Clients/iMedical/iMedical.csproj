@@ -7,9 +7,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile></DocumentationFile>
+		<OutputPath>..\Build\bin\Debug\</OutputPath>
+	</PropertyGroup>
+	
 	<ItemGroup>
-		<PackageReference Include="Autoupdater.NET.Official" Version="1.7.7" />
-		<PackageReference Include="IdentityModel" Version="6.0.0" />
+		<PackageReference Include="Autoupdater.NET.Official" Version="1.8.3" />
+		<PackageReference Include="IdentityModel" Version="6.1.0" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
 		<PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
@@ -17,21 +22,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Framework\Plum.Windows.Controls\Plum.Windows.Controls.csproj" />
+	  <ProjectReference Include="..\..\Framework\Plum.Windows.Apps\Plum.Windows.Apps.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Properties\Settings.Designer.cs">
-	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Settings.settings</DependentUpon>
-	  </Compile>
+	  <Folder Include="Properties\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="Properties\Settings.settings">
-	    <Generator>SettingsSingleFileGenerator</Generator>
-	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+	  <None Update="Resources\en-US.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\zh-CN.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 

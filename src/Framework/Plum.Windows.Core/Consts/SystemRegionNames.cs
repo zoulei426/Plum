@@ -5,16 +5,10 @@
     /// </summary>
     public class SystemRegionNames
     {
-        /// <summary>
-        /// The region of the main user interface.
-        /// </summary>
-        public const string MainTabRegion = "MainTabRegion";
+        public const string MAIN = "System.Main";
 
-        /// <summary>
-        /// The region of the user setting interface.
-        /// </summary>
-        public const string SettingsTabRegion = "SettingsTabRegion";
+        public const string SETTINGS = "System.Settings";
 
-        public const string DialogContentRegion = "DialogContentRegion";
+        public const string DIALOG = "System.Dialog";
     }
 }

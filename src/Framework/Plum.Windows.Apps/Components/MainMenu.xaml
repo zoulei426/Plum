@@ -1,0 +1,72 @@
+﻿<md:PopupEx x:Class="Plum.Windows.Apps.Components.MainMenu"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:local="clr-namespace:Plum.Windows.Apps.Components"
+            xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:prism="http://prismlibrary.com/"
+            xmlns:ctls="clr-namespace:Plum.Windows.Controls;assembly=Plum.Windows.Controls"
+            xmlns:i18n="clr-namespace:Plum.Windwos.Localization;assembly=Plum.Windows.Core"
+            prism:ViewModelLocator.AutoWireViewModel="True"
+            d:DesignHeight="450"
+            d:DesignWidth="800"
+            AllowsTransparency="True"
+            UseLayoutRounding="True"
+            mc:Ignorable="d">
+    <md:ColorZone Margin="2"
+                  BorderThickness="1"
+                  Effect="{StaticResource MaterialDesignShadowDepth2}">
+
+        <StackPanel>
+            <Grid Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <!--<Ellipse Grid.Column="0"
+                         Width="50"
+                         Height="55">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding User.AvatarUrl, Mode=TwoWay, Converter={StaticResource UriToImageSourceConverter}, TargetNullValue='pack://application:,,,/Plum.Resources;component/Images/avatar-default.png'}" />
+                    </Ellipse.Fill>
+                </Ellipse>-->
+                <!--<TextBlock Grid.Column="2"
+                           Text="{Binding User.UserName, Mode=TwoWay}"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Bold" />-->
+            </Grid>
+            <StackPanel Margin="0,0,0,8">
+                <!--<ctls:SettingItem Command="{Binding ProfileCommand}"
+                                  IconKind="AccountSettings"
+                                  Label="{i18n:Localizer Profiles}" />
+                <Separator Margin="0,8" />-->
+
+                <ctls:SettingItem Command="{Binding SettingsCommand}"
+                                  IconKind="Settings"
+                                  Label="{i18n:Localizer Setting}" />
+                <Separator Margin="0,8" />
+
+                <ctls:SettingItem Command="{Binding HelpCommand}"
+                                  IconKind="HelpCircleOutline"
+                                  Label="{i18n:Localizer Help}" />
+                <!--  open web  -->
+                <!--<ctls:SettingItem Command="{Binding OpenOfficialSiteCommand}"
+                                  IconKind="Web"
+                                  Label="{i18n:Localizer Web Version}" />-->
+                <!--  open about  -->
+                <ctls:SettingItem Command="{Binding AboutCommand}"
+                                  IconKind="InformationVariant"
+                                  Label="{i18n:Localizer About}" />
+                <Separator Margin="0,8" />
+
+                <ctls:SettingItem Command="{Binding SignOutCommand}"
+                                  IconKind="Logout"
+                                  Foreground="{DynamicResource DangerBrush}"
+                                  Label="{i18n:Localizer Logout}" />
+            </StackPanel>
+        </StackPanel>
+    </md:ColorZone>
+</md:PopupEx>

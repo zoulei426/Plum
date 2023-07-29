@@ -360,7 +360,7 @@ namespace Plum.Windows.Controls
             Dispatcher.Invoke(new Action(() =>
             {
                 listPaging.Clear();
-                TotalCount = pagedResult.TotalCount;
+                TotalCount = pagedResult.Count;
 
                 PageCount = (int)((TotalCount + PageSize - 1) / PageSize);
 

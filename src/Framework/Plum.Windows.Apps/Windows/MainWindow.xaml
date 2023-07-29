@@ -1,14 +1,15 @@
-﻿<Window x:Class="iMedical.Windows.MainWindow"
+﻿<Window x:Class="Plum.Windows.Apps.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:iMedical.Windows"
+        xmlns:local="clr-namespace:Plum.Windows.Apps"
         xmlns:consts="clr-namespace:Plum.Windows.Consts;assembly=Plum.Windows.Core"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:prism="http://prismlibrary.com/"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:panels="clr-namespace:iMedical.Panels"
+        xmlns:i18n="clr-namespace:Plum.Windwos.Localization;assembly=Plum.Windows.Core"
+        xmlns:components="clr-namespace:Plum.Windows.Apps.Components"
         Title="iMedical"
         Width="1350"
         Height="800"
@@ -32,7 +33,7 @@
 
                 <TabControl Grid.Column="0"
                             Grid.ColumnSpan="2"
-                            prism:RegionManager.RegionName="{x:Static consts:SystemRegionNames.MainTabRegion}"
+                            prism:RegionManager.RegionName="{x:Static consts:SystemRegionNames.MAIN}"
                             SelectedIndex="0"
                             Style="{StaticResource MainTabControlStyle}"
                             ItemContainerStyle="{StaticResource MainTabItemStyle}" />
@@ -51,21 +52,21 @@
                                          Foreground="{StaticResource LightGreyBackgroundBrush}"
                                          Kind="Menu" />
                             <TextBlock Grid.Column="2"
-                                       Text="菜单"
+                                       Text="{i18n:Localizer Menu}"
                                        HorizontalAlignment="Center"
                                        Foreground="{StaticResource LightGreyBackgroundBrush}"
                                        FontSize="14" />
                         </StackPanel>
                     </ToggleButton>
 
-                    <panels:SettingsPopup Width="284"
-                                          Height="Auto"
-                                          IsOpen="{Binding IsChecked, ElementName=SettingsToggleButton}"
-                                          StaysOpen="False"
-                                          PlacementTarget="{Binding ElementName=SettingsToggleButton}"
-                                          Placement="Right"
-                                          VerticalOffset="-283"
-                                          PopupAnimation="Fade" />
+                    <components:MainMenu Width="284"
+                                         Height="Auto"
+                                         IsOpen="{Binding IsChecked, ElementName=SettingsToggleButton}"
+                                         StaysOpen="False"
+                                         PlacementTarget="{Binding ElementName=SettingsToggleButton}"
+                                         Placement="Right"
+                                         VerticalOffset="-283"
+                                         PopupAnimation="Fade" />
                 </StackPanel>
             </Grid>
         </md:DialogHost>

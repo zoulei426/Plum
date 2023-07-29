@@ -9,8 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.5.1" />
+    <PackageReference Include="FluentValidation" Version="11.6.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Prism.Core" Version="8.1.97" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />

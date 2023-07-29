@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace iMedical
+namespace Plum.Windows.Apps
 {
     public static class ProcessController
     {
@@ -49,6 +49,12 @@ namespace iMedical
         {
             Properties.Settings.Default.IsRestarting = true;
             Process.Start($"{Directory.GetCurrentDirectory()}/{PROCESS_NAME}.exe");
+            Application.Current.Shutdown();
+        }
+
+        public static void Shutdown()
+        {
+            Properties.Settings.Default.IsRestarting = false;
             Application.Current.Shutdown();
         }
 

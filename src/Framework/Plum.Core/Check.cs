@@ -9,11 +9,22 @@ namespace Plum
     [DebuggerStepThrough]
     public static class Check
     {
-        /// <summary>
-        /// Throws if null.
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <exception cref="ArgumentNullException"></exception>
+        public static object NotNull(object parameter)
+        {
+            if (parameter == null)
+                throw new ArgumentNullException(nameof(parameter));
+
+            return parameter;
+        }
+
+        public static T NotNull<T>(T parameter)
+        {
+            if (parameter == null)
+                throw new ArgumentNullException(nameof(parameter));
+
+            return parameter;
+        }
+
         public static void NotNull(params object[] parameters)
         {
             if (parameters.Any(item => item == null))

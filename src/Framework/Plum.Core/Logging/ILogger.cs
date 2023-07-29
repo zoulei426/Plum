@@ -30,5 +30,7 @@
         /// </summary>
         /// <param name="message">The message.</param>
         void Warning(string message);
+
+        void CloseAndFlush();
     }
 }

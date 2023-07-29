@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Framework\Plum.Windows.Controls\Plum.Windows.Controls.csproj" />
+  </ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="xcopy  &quot;$(TargetPath)&quot; &quot;$(SolutionDir)src\Clients\Build\$(OutDir)Modules\&quot; /s /e /y" />
+	</Target>
+</Project>

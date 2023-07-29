@@ -1,5 +1,6 @@
-﻿using iMedical.Settings;
-using MaterialDesignThemes.Wpf;
+﻿using MaterialDesignThemes.Wpf;
+using Plum.Log;
+using Plum.Notify;
 using Plum.Windows.Consts;
 using Plum.Windows.Mvvm;
 using Prism.Ioc;
@@ -15,7 +16,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace iMedical.Windows
+namespace Plum.Windows.Apps
 {
     [AddINotifyPropertyChangedInterface]
     public class MainWindowViewModel : ViewModelBase, IViewLoadedAndUnloadedAware
@@ -51,13 +52,21 @@ namespace iMedical.Windows
 
         public void OnLoaded()
         {
-            RegionManager.RegisterViewWithRegion(SystemRegionNames.SettingsTabRegion, typeof(CommonSetting));
+            //RegionManager.RegisterViewWithRegion(SystemRegionNames.SettingsTabRegion, typeof(CommonSetting));
 
             var moduleManager = Container.Resolve<IModuleManager>();
 
             foreach (var item in moduleManager.Modules.OrderBy(x => x.ModuleName))
             {
-                moduleManager.LoadModule(item.ModuleName);
+                try
+                {
+                    moduleManager.LoadModule(item.ModuleName);
+                }
+                catch (Exception ex)
+                {
+                    Container.Resolve<INotifier>().Error($"加载模块 {item.ModuleName} 失败：{ex.Message}");
+                    Container.Resolve<ILogger>().Error($"加载模块 {item.ModuleName} 失败：{ex.Message}", ex);
+                }
             }
         }
 

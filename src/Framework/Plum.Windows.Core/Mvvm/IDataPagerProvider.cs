@@ -16,7 +16,7 @@ namespace Plum.Windows.Mvvm
 
         //List<object> PagingAsync(int pageIndex, int pageSize, string sorting, string filter = null);
 
-        PagedResult PagingAsync(int pageIndex, int pageSize, string sorting, string filter = null);
+        Paged PagingAsync(int pageIndex, int pageSize, string sorting, string filter = null);
 
         string GetSumaryStatistic();
 
