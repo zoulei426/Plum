@@ -168,7 +168,7 @@ namespace Plum.Panels
                 {
                     Notifier.Error(ex.Message, true);
                 }
-                Notifier.Error(ex.Content.ToObject<ErrorResponse>().ToString(), true);
+                Notifier.Error(ex.Content.FromJson<ErrorResponse>().ToString(), true);
             }
             catch (HttpRequestException httpRequestException)
             {

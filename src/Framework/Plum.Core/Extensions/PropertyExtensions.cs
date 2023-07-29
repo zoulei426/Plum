@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
@@ -8,20 +9,6 @@ namespace Plum
 {
     public static class PropertyExtensions
     {
-        //public static string GetDisplayName(this PropertyInfo pi)
-        //{
-        //    if (pi is null) return string.Empty;
-        //    var display = pi.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
-        //    if (display.IsNullOrEmpty())
-        //        display = pi.GetCustomAttribute<DisplayAttribute>()?.Name;
-        //    if (display.IsNullOrEmpty())
-        //        display = pi.GetCustomAttribute<DescriptionAttribute>()?.Description;
-        //    if (display.IsNullOrEmpty())
-        //        display = pi.Name;
-
-        //    return display;
-        //}
-
         public static string GetDisplayName(this MemberInfo mi)
         {
             if (mi is null) return string.Empty;
@@ -36,18 +23,28 @@ namespace Plum
             return display;
         }
 
-        //public static PropertyInfo GetPropertyInfo<T>(Expression<Func<T, object>> propertySelector)
-        //{
-        //    var expression = propertySelector as LambdaExpression;
+        public static string GetDisplayName(this PropertyInfo pi)
+        {
+            if (pi is null) return string.Empty;
+            var display = pi.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
+            if (display.IsNullOrEmpty())
+                display = pi.GetCustomAttribute<DescriptionAttribute>()?.Description;
+            if (display.IsNullOrEmpty())
+                display = pi.Name;
 
-        //    Check.NotNull(expression);
+            return display;
+        }
 
-        //    var body = expression.Body.NodeType == ExpressionType.MemberAccess ?
-        //        (MemberExpression)expression.Body :
-        //        (MemberExpression)((UnaryExpression)expression.Body).Operand;
+        public static string GetDisplayName(this object value)
+        {
+            if (value is null) return string.Empty;
 
-        //    return typeof(T).GetMember(body.Member.Name)[0] as PropertyInfo;
-        //}
+            var type = value.GetType();
+
+            return type.IsEnum ?
+                    type.GetField(value.ToString()).GetDisplayName() :
+                    type.GetDisplayName();
+        }
 
         public static PropertyInfo GetPropertyInfo<T>(this Expression<Func<T, object>> propertySelector)
         {
@@ -65,16 +62,17 @@ namespace Plum
             return typeof(T).GetMember(body.Member.Name)[0] as PropertyInfo;
         }
 
-        public static string GetDisplayName(this PropertyInfo pi)
+        public static PropertyInfo GetPropertyInfo<T, F>(this Expression<Func<T, F>> propertySelector)
         {
-            if (pi is null) return string.Empty;
-            var display = pi.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
-            if (display.IsNullOrEmpty())
-                display = pi.GetCustomAttribute<DescriptionAttribute>()?.Description;
-            if (display.IsNullOrEmpty())
-                display = pi.Name;
+            var expression = propertySelector as LambdaExpression;
 
-            return display;
+            Check.NotNull(expression, nameof(expression));
+
+            var body = expression.Body.NodeType == ExpressionType.MemberAccess ?
+                (MemberExpression)expression.Body :
+                (MemberExpression)((UnaryExpression)expression.Body).Operand;
+
+            return typeof(T).GetMember(body.Member.Name)[0] as PropertyInfo;
         }
     }
 }

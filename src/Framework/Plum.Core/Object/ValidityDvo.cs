@@ -119,7 +119,7 @@ namespace Plum.Object
                 {
                     var errorMessages = errors.Select(x => x.ErrorMessage).ToList();
                     Errors[columnName] = errorMessages;
-                    return errorMessages.StringJoin(Environment.NewLine);
+                    return errorMessages.JoinStrings(Environment.NewLine);
                 }
                 else
                 {
@@ -137,7 +137,7 @@ namespace Plum.Object
             var result = new StringBuilder();
             foreach (var errorDic in Errors)
             {
-                result.AppendLine(errorDic.Value.StringJoin(Environment.NewLine));
+                result.AppendLine(errorDic.Value.JoinStrings(Environment.NewLine));
             }
 
             return result.ToString();

@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections;
+using System.Reflection;
 
 namespace Plum.Object
 {
+    public interface ICD : ICloneable, IDisposable
+    {
+    }
+
     /// <summary>
     /// 核心类
     /// </summary>
     [Serializable]
-    public class ObjectBase : ICloneable, IDisposable
+    public class CDObject : ICD
     {
         #region Methods
 
@@ -21,10 +26,10 @@ namespace Plum.Object
         public static object TryClone(object obj)
         {
             if (obj is ICloneable ic)
-                return ic.Clone();
+                return ic?.Clone();
 
             if (obj is IList list)
-                return list.Clone();
+                return list?.Clone();
 
             return obj;
         }
@@ -40,7 +45,7 @@ namespace Plum.Object
         public virtual object Clone()
         {
             object newObj = MemberwiseClone();
-
+            newObj.TraversalPropertiesInfo(ClonePropertyHandler, newObj);
             return newObj;
         }
 
@@ -50,6 +55,16 @@ namespace Plum.Object
         public virtual void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+
+        private bool ClonePropertyHandler(PropertyInfo pi, object value, object target)
+        {
+            if (!pi.CanWrite)
+                return true;
+
+            pi.SetValue(target, CDObject.TryClone(value), null);
+
+            return true;
         }
 
         #endregion Methods - Virtual

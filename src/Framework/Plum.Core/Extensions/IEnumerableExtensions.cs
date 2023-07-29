@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.Linq;
 using System.Reflection;
@@ -67,7 +68,7 @@ namespace Plum
             MethodInfo addMethod = list.GetType().GetMethod("Add");
 
             foreach (object item in source)
-                addMethod.Invoke(list, new object[] { ObjectBase.TryClone(item) });
+                addMethod.Invoke(list, new object[] { CDObject.TryClone(item) });
 
             return list;
         }
@@ -144,6 +145,68 @@ namespace Plum
             {
                 dic.Add(key, new List<TValue> { value });
             }
+        }
+
+        public static IEnumerable<TSource> Distinct<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        {
+            HashSet<TKey> seenKeys = new HashSet<TKey>();
+            foreach (TSource element in source)
+            {
+                if (seenKeys.Add(keySelector(element)))
+                {
+                    yield return element;
+                }
+            }
+        }
+
+        public static ObservableCollection<TSource> ToObservableCollection<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source is null) return null;
+            return new ObservableCollection<TSource>(source);
+        }
+
+        public static string JoinStrings<TSource>(this IEnumerable<TSource> source, string separator)
+        {
+            return string.Join(separator, source);
+        }
+
+        public static string JoinStrings(this (string, string) source, string separator)
+        {
+            var strings = new string[2] { source.Item1, source.Item2 };
+            return string.Join(separator, strings);
+        }
+
+        public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
+        {
+            foreach (var item in source)
+            {
+                action(item);
+            }
+        }
+
+        public static Lazy<IEnumerable<TSource>> Lazy<TSource>(this IEnumerable<TSource> source)
+        {
+            return new Lazy<IEnumerable<TSource>>(() => source);
+        }
+
+        /// <summary>
+        /// 二维线性化
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static List<T> Linearized<T>(this IEnumerable<IEnumerable<T>> source)
+        {
+            var result = new List<T>();
+            if (source.IsNullOrEmpty()) return result;
+
+            source.ForEach(lst =>
+            {
+                if (lst.IsNullOrEmpty()) return;
+                result.AddRange(lst);
+            });
+
+            return result;
         }
 
         #endregion Methods

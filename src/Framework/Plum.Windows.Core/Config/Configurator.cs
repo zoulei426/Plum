@@ -34,7 +34,7 @@ namespace Plum.Windows.Config
         /// <typeparam name="T"></typeparam>
         /// <param name="key">The key.</param>
         /// <returns></returns>
-        public T GetValue<T>(string key) => (_storage[key]?.ToString() ?? string.Empty).ToObject<T>();
+        public T GetValue<T>(string key) => (_storage[key]?.ToString() ?? string.Empty).FromJson<T>();
 
         public T GetValue<T>() where T : new()
         {

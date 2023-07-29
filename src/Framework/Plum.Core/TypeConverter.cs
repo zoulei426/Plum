@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace Plum.Windows.Convertors
 {
-    public abstract class TypeConverter : ObjectBase
+    public abstract class TypeConverter : CDObject
     {
         #region Fields
 

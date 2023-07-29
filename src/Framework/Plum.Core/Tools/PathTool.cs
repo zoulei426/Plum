@@ -20,7 +20,7 @@ namespace Plum.Tools
                 {
                     throw new Exception($"此目录下同名文件已超过{MAX_COUNT}个，无法重命名");
                 }
-                string newFilename = "{0}({1}){2}".FormatWith(filename, counter, extension);
+                string newFilename = string.Format("{0}({1}){2}", filename, counter, extension);
                 newFileName = Path.Combine(directory, newFilename);
                 counter++;
             }

@@ -47,7 +47,7 @@ namespace Plum.Windows.Objects
             if (!pi.CanWrite)
                 return true;
 
-            pi.SetValue(target, ObjectBase.TryClone(value), null);
+            pi.SetValue(target, CDObject.TryClone(value), null);
 
             return true;
         }

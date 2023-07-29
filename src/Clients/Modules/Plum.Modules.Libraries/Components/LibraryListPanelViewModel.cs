@@ -1,5 +1,6 @@
 ﻿using NPOI.POIFS.NIO;
 using Plum.Modules.Libraries.Data;
+using Plum.Modules.Libraries.Entities;
 using Plum.Modules.Libraries.Models;
 using Plum.Windows.Controls;
 using Plum.Windows.Mvvm;
@@ -17,7 +18,7 @@ namespace Plum.Modules.Libraries.Components
     public class LibraryListPanelViewModel :
          PagableViewModel<
              LibraryListPanel,
-             LibraryDvo,
+             DynamicLinkLibrary,
              SelectedLibraryChangedEvent,
              RefreshLibraryEvent>
     {

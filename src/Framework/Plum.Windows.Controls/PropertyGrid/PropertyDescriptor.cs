@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -177,8 +178,8 @@ namespace Plum.Windows.Controls
             Nullable = Nullable ? ra == null : Nullable;
             Required = ra != null;
 
-            var dta = pi.GetAttribute<DataColumnAttribute>();
-            Nullable = Nullable && dta != null ? dta.Nullable : Nullable;
+            var dta = pi.GetAttribute<ColumnAttribute>();
+            //Nullable = Nullable && dta != null ? dta.Nullable : Nullable;
 
             //var wa = pi.GetAttribute<WatermaskLanguageAttribute>();
             //Watermask = wa == null ? string.Empty : wa.Name;
@@ -706,7 +707,7 @@ namespace Plum.Windows.Controls
                 if (!field.FieldType.IsEnum)
                     continue;
 
-                Items[field.GetValue(null)] = field.GetValue(null)?.GetCustomAttributeDescription();
+                Items[field.GetValue(null)] = field.GetValue(null)?.GetDisplayName();
             }
 
             var cb = new ComboBox();

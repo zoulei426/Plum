@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plum.Extensions;
+using System;
 
 namespace Plum.Windows.Convertors
 {
@@ -10,7 +11,7 @@ namespace Plum.Windows.Convertors
         /// <param name="value">if set to <c>true</c> [value].</param>
         /// <returns></returns>
         protected override string Convert(Enum value) =>
-            value.GetCustomAttributeDescription();
+            value.GetDisplayName();
 
         /// <summary>
         /// Converts the back.

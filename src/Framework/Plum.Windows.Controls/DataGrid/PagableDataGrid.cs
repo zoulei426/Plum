@@ -320,7 +320,7 @@ namespace Plum.Windows.Controls
                         Header = column.AliasName
                     };
 
-                    var b = new Binding(column.ColumnName)
+                    var b = new Binding(column.PropertyName)
                     {
                         Converter = new ObjectToSingleLineStringConverter()
                     };

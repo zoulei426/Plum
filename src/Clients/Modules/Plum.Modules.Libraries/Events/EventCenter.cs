@@ -1,4 +1,5 @@
-﻿using Plum.Modules.Libraries.Models;
+﻿using Plum.Modules.Libraries.Entities;
+using Plum.Modules.Libraries.Models;
 using Prism.Events;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Plum.Modules.Libraries.Events
 {
     public class EventCenter
     {
-        public class SelectedLibraryChangedEvent : PubSubEvent<LibraryDvo>
+        public class SelectedLibraryChangedEvent : PubSubEvent<DynamicLinkLibrary>
         {
         }
 

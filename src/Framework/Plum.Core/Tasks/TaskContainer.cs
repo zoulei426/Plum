@@ -3,7 +3,7 @@ using System;
 
 namespace Plum.Tasks
 {
-    public class TaskContainer : ObjectBase
+    public class TaskContainer : CDObject
     {
         #region Properties
 

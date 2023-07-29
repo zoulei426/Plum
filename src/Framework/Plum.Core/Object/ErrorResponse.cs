@@ -29,7 +29,7 @@ namespace Plum.Object
                 result.AppendLine($"验证错误：");
                 foreach (var validtion in Error.ValidationErrors)
                 {
-                    result.AppendLine($"{validtion.Message}：{validtion.Members.StringJoin(",")}");
+                    result.AppendLine($"{validtion.Message}：{validtion.Members.JoinStrings(",")}");
                 }
             }
 

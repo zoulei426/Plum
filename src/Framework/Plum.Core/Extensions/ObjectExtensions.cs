@@ -17,6 +17,28 @@ namespace Plum
         private const double Tolerance = 1e-6;
 
         /// <summary>
+        ///     A T extension method that gets property value.
+        /// </summary>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
+        /// <param name="this">The @this to act on.</param>
+        /// <param name="propertyName">Name of the property.</param>
+        /// <returns>The property value.</returns>
+        public static object GetPropertyValue<T>(this T @this, string propertyName)
+        {
+            Type type = @this.GetType();
+            PropertyInfo property = type.GetProperty(propertyName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+
+            return property.GetValue(@this, null);
+        }
+
+        public static void SetPropertyValue<T>(this T @this, string propertyName, object value)
+        {
+            Type type = @this.GetType();
+            PropertyInfo property = type.GetProperty(propertyName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            property.SetValue(@this, value, null);
+        }
+
+        /// <summary>
         /// Casts to.
         /// </summary>
         /// <typeparam name="T"></typeparam>

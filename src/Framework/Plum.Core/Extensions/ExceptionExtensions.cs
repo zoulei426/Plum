@@ -24,7 +24,7 @@ namespace Plum
                 var apiException = inner as ApiException;
                 if (apiException is not null)
                 {
-                    result.AppendLine($"响应信息：{apiException.Content.ToObject<ErrorResponse>()}");
+                    result.AppendLine($"响应信息：{apiException.Content.FromJson<ErrorResponse>()}");
                 }
             }
             return result.ToString();

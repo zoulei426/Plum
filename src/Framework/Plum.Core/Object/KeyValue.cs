@@ -5,7 +5,7 @@ namespace Plum.Object
 {
     [Serializable]
     [DataContract]
-    public class KeyValue<TKey, TValue> : ObjectBase
+    public class KeyValue<TKey, TValue> : CDObject
     {
         #region Properties
 

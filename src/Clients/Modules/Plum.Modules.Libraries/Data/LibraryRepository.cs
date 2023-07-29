@@ -1,4 +1,6 @@
-﻿using Plum.Modules.Libraries.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Plum.Modules.Libraries.Entities;
+using Plum.Modules.Libraries.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +11,24 @@ namespace Plum.Modules.Libraries.Data
 {
     public class LibraryRepository : ILibraryRepository
     {
+        private LibraryDbContext context = new LibraryDbContext();
+
         public LibraryRepository()
         {
         }
 
         public long Count(string filter = null)
         {
-            return 1;
+            return context.Libraries.LongCount();
         }
 
-        public List<LibraryDvo> Page(int pageIndex, int pageSize, string sorting, string filter = null)
+        public List<DynamicLinkLibrary> Page(int pageIndex, int pageSize, string sorting, string filter = null)
         {
-            return new List<LibraryDvo> { new LibraryDvo { Name = "Test" } };
+            return context.Libraries
+                .OrderBy(x => x.DllId)
+                .Skip(pageIndex * pageSize)
+                .Take(pageSize)
+                .ToList();
         }
     }
 }

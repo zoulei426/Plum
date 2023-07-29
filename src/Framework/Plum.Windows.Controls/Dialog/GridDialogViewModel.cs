@@ -92,7 +92,7 @@ namespace Plum.Windows.Controls.Dialog
 
                 ObejctName = parameters.GetValue<string>("ObjectName");
                 var type = parameters.GetValue<Type>("ObjectType");
-                var result = parameters.GetValue<string>("Object").ToObject(type);
+                var result = parameters.GetValue<string>("Object").FromJson(type);
 
                 ItemsSource = result;
 

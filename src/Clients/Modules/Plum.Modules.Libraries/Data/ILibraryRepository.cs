@@ -1,4 +1,5 @@
-﻿using Plum.Modules.Libraries.Models;
+﻿using Plum.Modules.Libraries.Entities;
+using Plum.Modules.Libraries.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,6 @@ namespace Plum.Modules.Libraries.Data
     {
         long Count(string filter = null);
 
-        List<LibraryDvo> Page(int pageIndex, int pageSize, string sorting, string filter = null);
+        List<DynamicLinkLibrary> Page(int pageIndex, int pageSize, string sorting, string filter = null);
     }
 }

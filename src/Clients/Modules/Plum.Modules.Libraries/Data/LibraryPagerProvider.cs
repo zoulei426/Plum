@@ -1,4 +1,5 @@
-﻿using Plum.Modules.Libraries.Models;
+﻿using Plum.Modules.Libraries.Entities;
+using Plum.Modules.Libraries.Models;
 using Plum.Object;
 using Plum.Windows.Mvvm;
 using System;
@@ -20,18 +21,15 @@ namespace Plum.Modules.Libraries.Data
 
         public string GetDefaultOrderPropertyName()
         {
-            return nameof(LibraryDvo.Name);
+            return nameof(DynamicLinkLibrary.DllId);
         }
 
         public DataColumn[] GetProperties()
         {
-            return new DataColumn[]
-            {
-                new DataColumn{
-                    ColumnName = nameof(LibraryDvo.Name),
-                    AliasName = "库名"
-                }
-            };
+            return typeof(DynamicLinkLibrary).GetDataColumnsInclude<DynamicLinkLibrary>(
+                x => x.DllId, x => x.DllCode, x => x.DllVersion, x => x.DllUnitName,
+                x => x.DllDesc, x => x.DllClzName
+                ).ToArray();
         }
 
         public string GetSumaryStatistic()

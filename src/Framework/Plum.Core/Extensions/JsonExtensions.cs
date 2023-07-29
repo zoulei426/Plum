@@ -53,14 +53,14 @@ namespace Plum
         /// <typeparam name="T"></typeparam>
         /// <param name="json">The json.</param>
         /// <returns></returns>
-        public static T ToObject<T>(this string json)
+        public static T FromJson<T>(this string json)
         {
             return !string.IsNullOrWhiteSpace(json)
                 ? JsonConvert.DeserializeObject<T>(json, JsonDeserializerSettings)
                 : default;
         }
 
-        public static object ToObject(this string json, Type type)
+        public static object FromJson(this string json, Type type)
         {
             return !string.IsNullOrWhiteSpace(json)
                 ? JsonConvert.DeserializeObject(json, type, JsonDeserializerSettings)

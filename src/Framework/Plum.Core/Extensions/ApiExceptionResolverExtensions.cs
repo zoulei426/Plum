@@ -36,7 +36,7 @@ namespace Plum
                         notifier.Error(ex.Message);
                         return false;
                     }
-                    notifier.Error(ex.Content.ToObject<ErrorResponse>().ToString());
+                    notifier.Error(ex.Content.FromJson<ErrorResponse>().ToString());
                     return false;
                 }
                 catch (HttpRequestException httpRequestException)
@@ -60,7 +60,7 @@ namespace Plum
                         notifier.Error(ex.Message);
                         return default(T);
                     }
-                    notifier.Error(ex.Content.ToObject<ErrorResponse>().ToString());
+                    notifier.Error(ex.Content.FromJson<ErrorResponse>().ToString());
                 }
                 catch (HttpRequestException httpRequestException)
                 {
