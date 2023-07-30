@@ -8,7 +8,9 @@ using Prism.Regions;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,6 +46,8 @@ namespace Plum.Modules.Libraries.Components
             base.OnNavigatedTo(navigationContext);
 
             SelectedItem = NavParams.GetValue<LibraryDvo>(NavParamKeys.CURRENT_LIBRARY);
+
+            InitializeApis();
         }
 
         public void OnLoaded(LibraryDetailPanel view)
@@ -70,6 +74,26 @@ namespace Plum.Modules.Libraries.Components
         private void Pg_InitializeBegin(object sender, EventArgs e)
         {
             IsBusy = true;
+        }
+
+        private void InitializeApis()
+        {
+            if (SelectedItem.Status < Entities.LibraryStatus.Installed)
+            {
+                return;
+            }
+
+            var path = Path.Combine(SelectedItem.LocalPath, SelectedItem.LocalVersion);
+            var dirInfo = new DirectoryInfo(path);
+            dirInfo.GetFiles().ForEach(file =>
+            {
+                if (file.Extension.Equals(".dll", StringComparison.OrdinalIgnoreCase)
+                || file.Extension.Equals(".exe", StringComparison.OrdinalIgnoreCase))
+                {
+                    var assembly1 = Assembly.LoadFrom(file.FullName);
+                    var assembly2 = Assembly.LoadFile(file.FullName);
+                }
+            });
         }
 
         #endregion Methods

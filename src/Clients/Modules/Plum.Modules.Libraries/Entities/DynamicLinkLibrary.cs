@@ -16,6 +16,8 @@ namespace Plum.Modules.Libraries.Entities
     [Table("base_dynamic_link_library")]
     public class DynamicLinkLibrary : DataViewObject
     {
+        #region Properties
+
         [Key]
         [Column("dll_id")]
         [Description("库ID")]
@@ -81,5 +83,16 @@ namespace Plum.Modules.Libraries.Entities
         [Column("dll_target_path")]
         [Description("库文件路径")]
         public string? DllTargetPath { get; set; }
+
+        #endregion Properties
+
+        #region Methods
+
+        public override string ToString()
+        {
+            return DllCode;
+        }
+
+        #endregion Methods
     }
 }

@@ -5,6 +5,7 @@
     <UseWPF>true</UseWPF>
     <Title>Plum.Resources</Title>
     <PackageId>Z$(AssemblyName)</PackageId>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

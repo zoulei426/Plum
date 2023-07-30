@@ -145,6 +145,10 @@ namespace Plum.Modules.Libraries.Components
                 {
                     Directory.Delete(SelectedItem.LocalPath, true);
                     SelectedItem.Refresh();
+
+                    var message = $"卸载 {SelectedItem} 完成";
+                    Notifier.Success(message);
+                    Logger.Infomation(message);
                 }
             });
         }

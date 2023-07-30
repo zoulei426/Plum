@@ -8,6 +8,7 @@
     <PackageIcon>logo.png</PackageIcon>
     <PackageId>Z$(AssemblyName)</PackageId>
     <UserSecretsId>ebcef53e-7be5-49fa-bfb8-cceaedc34ad0</UserSecretsId>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
