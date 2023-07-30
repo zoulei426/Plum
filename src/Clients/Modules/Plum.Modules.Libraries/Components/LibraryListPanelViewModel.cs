@@ -5,6 +5,7 @@ using Plum.Modules.Libraries.Models;
 using Plum.Windows.Controls;
 using Plum.Windows.Mvvm;
 using Prism.Ioc;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +16,11 @@ using static Plum.Modules.Libraries.Events.EventCenter;
 
 namespace Plum.Modules.Libraries.Components
 {
+    [AddINotifyPropertyChangedInterface]
     public class LibraryListPanelViewModel :
          PagableViewModel<
              LibraryListPanel,
-             DynamicLinkLibrary,
+             LibraryDvo,
              SelectedLibraryChangedEvent,
              RefreshLibraryEvent>
     {

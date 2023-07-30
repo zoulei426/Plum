@@ -27,7 +27,7 @@ namespace Plum.Modules.Libraries
 
         public void OnLoaded()
         {
-            RegionManager.RegisterViewWithRegion(RegionNames.LIBRARY_TOOLBAR, typeof(LibraryToolBar));
+            RegionManager.RegisterViewWithRegion(RegionNames.LIBRARY_TOOLBAR, typeof(LibraryListToolBar));
             RegionManager.RegisterViewWithRegion(RegionNames.LIBRARY_MAIN_CONTENT, typeof(LibraryListPanel));
         }
 

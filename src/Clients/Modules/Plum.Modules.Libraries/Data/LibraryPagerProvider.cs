@@ -21,12 +21,12 @@ namespace Plum.Modules.Libraries.Data
 
         public string GetDefaultOrderPropertyName()
         {
-            return nameof(DynamicLinkLibrary.DllId);
+            return nameof(LibraryDvo.DllId);
         }
 
         public DataColumn[] GetProperties()
         {
-            return typeof(DynamicLinkLibrary).GetDataColumnsInclude<DynamicLinkLibrary>(
+            return typeof(LibraryDvo).GetDataColumnsInclude<LibraryDvo>(
                 x => x.DllId, x => x.DllCode, x => x.DllVersion, x => x.DllUnitName,
                 x => x.DllDesc, x => x.DllClzName
                 ).ToArray();
@@ -46,7 +46,7 @@ namespace Plum.Modules.Libraries.Data
             }
 
             var list = libRepo.Page(pageIndex, pageSize, sorting, filter);
-            return new Paged(count, list.ConvertAll(x => x.CastTo<object>()));
+            return new Paged(count, list.ConvertAll(x => x.ConvertTo<LibraryDvo>().CastTo<object>()));
         }
     }
 }

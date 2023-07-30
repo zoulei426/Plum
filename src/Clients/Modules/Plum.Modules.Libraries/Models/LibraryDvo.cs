@@ -1,4 +1,5 @@
-﻿using Plum.Object;
+﻿using Plum.Modules.Libraries.Entities;
+using Plum.Object;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,7 @@ using System.Threading.Tasks;
 namespace Plum.Modules.Libraries.Models
 {
     [AddINotifyPropertyChangedInterface]
-    public class LibraryDvo : DataViewObject
+    public class LibraryDvo : DynamicLinkLibrary
     {
-        public string Name { get; set; }
     }
 }

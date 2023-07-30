@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plum.Windows.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,12 @@ using System.Windows.Shapes;
 namespace Plum.Modules.Libraries.Components
 {
     /// <summary>
-    /// LibraryToolBar.xaml 的交互逻辑
+    /// LibraryDetailPanel.xaml 的交互逻辑
     /// </summary>
-    public partial class LibraryToolBar : UserControl
+    [Navigable]
+    public partial class LibraryDetailPanel : UserControl
     {
-        public LibraryToolBar()
+        public LibraryDetailPanel()
         {
             InitializeComponent();
         }

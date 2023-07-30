@@ -39,18 +39,7 @@
 
                 <!--  ToolBar Content  -->
                 <md:Card Margin="10" UniformCornerRadius="2">
-                    <DockPanel>
-                        <TextBlock Text="{i18n:Localizer libs.Library List}"
-                                   Margin="15,0"
-                                   VerticalAlignment="Center"
-                                   DockPanel.Dock="Left"
-                                   Style="{StaticResource MaterialDesignHeadline5TextBlock}" />
-
-                        <ContentControl x:Name="ctr_toolbar"
-                                        Margin="15,0"
-                                        VerticalAlignment="Center"
-                                        DockPanel.Dock="Right" />
-                    </DockPanel>
+                    <ContentControl x:Name="ctr_toolbar" VerticalAlignment="Center" />
                 </md:Card>
 
                 <ContentControl x:Name="ctr_maincontent" Grid.Row="2"

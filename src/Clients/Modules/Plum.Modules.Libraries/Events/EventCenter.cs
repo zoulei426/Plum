@@ -11,7 +11,7 @@ namespace Plum.Modules.Libraries.Events
 {
     public class EventCenter
     {
-        public class SelectedLibraryChangedEvent : PubSubEvent<DynamicLinkLibrary>
+        public class SelectedLibraryChangedEvent : PubSubEvent<LibraryDvo>
         {
         }
 

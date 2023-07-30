@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="Plum.Modules.Libraries.Components.LibraryListToolBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Plum.Modules.Libraries.Components"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i18n="clr-namespace:Plum.Windwos.Localization;assembly=Plum.Windows.Core"
+             xmlns:ctls="clr-namespace:Plum.Windows.Controls;assembly=Plum.Windows.Controls"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Cursor" Value="Hand" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <hc:TransitioningContentControl>
+        <DockPanel>
+            <TextBlock Text="{i18n:Localizer libs.Library List}"
+                       Margin="15,0"
+                       VerticalAlignment="Center"
+                       DockPanel.Dock="Left"
+                       Style="{StaticResource MaterialDesignHeadline5TextBlock}" />
+
+            <StackPanel Margin="15,0"
+                        HorizontalAlignment="Right"
+                        DockPanel.Dock="Right"
+                        Orientation="Horizontal">
+
+                <Button Command="{Binding DetailCommand}" Cursor="Hand">
+                    <DockPanel>
+                        <md:PackIcon VerticalAlignment="Center" Kind="InformationVariantBoxOutline" />
+                        <TextBlock Text="{i18n:Localizer libs.Detail}"
+                                   Margin="4"
+                                   VerticalAlignment="center" />
+                    </DockPanel>
+                </Button>
+                <Button Command="{Binding InstallCommand}" Cursor="Hand">
+                    <DockPanel>
+                        <md:PackIcon VerticalAlignment="Center" Kind="CloudDownloadOutline" />
+                        <TextBlock Text="{i18n:Localizer libs.Install}"
+                                   Margin="4"
+                                   VerticalAlignment="center" />
+                    </DockPanel>
+                </Button>
+                <Button Command="{Binding UpdateCommand}" Cursor="Hand">
+                    <DockPanel>
+                        <md:PackIcon VerticalAlignment="Center" Kind="Update" />
+                        <TextBlock Text="{i18n:Localizer libs.Update}"
+                                   Margin="4"
+                                   VerticalAlignment="center" />
+                    </DockPanel>
+                </Button>
+                <Button Command="{Binding UninstallCommand}"
+                        Foreground="{DynamicResource DangerBrush}"
+                        Cursor="Hand">
+                    <DockPanel>
+                        <md:PackIcon VerticalAlignment="Center" Kind="DeleteForever" />
+                        <TextBlock Text="{i18n:Localizer libs.Uninstall}"
+                                   Margin="4"
+                                   VerticalAlignment="center" />
+                    </DockPanel>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+    </hc:TransitioningContentControl>
+</UserControl>

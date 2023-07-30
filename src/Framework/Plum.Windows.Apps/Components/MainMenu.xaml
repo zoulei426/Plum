@@ -41,6 +41,7 @@
             <StackPanel Margin="0,0,0,8">
                 <ctls:SettingItem Command="{Binding ProfileCommand}"
                                   IconKind="AccountSettings"
+                                  IsEnabled="False"
                                   Label="{i18n:Localizer Profiles}" />
                 <Separator Margin="0,8" />
 
@@ -51,6 +52,7 @@
 
                 <ctls:SettingItem Command="{Binding HelpCommand}"
                                   IconKind="HelpCircleOutline"
+                                  IsEnabled="False"
                                   Label="{i18n:Localizer Help}" />
 
                 <!--<ctls:SettingItem Command="{Binding OpenOfficialSiteCommand}"

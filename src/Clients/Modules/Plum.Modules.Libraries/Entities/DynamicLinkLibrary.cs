@@ -1,5 +1,6 @@
 ﻿using Plum.Attributes;
 using Plum.Object;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Plum.Modules.Libraries.Entities
 {
+    [AddINotifyPropertyChangedInterface]
     [Table("base_dynamic_link_library")]
     public class DynamicLinkLibrary : DataViewObject
     {

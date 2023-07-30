@@ -31,7 +31,7 @@ namespace Plum.Modules.Libraries
 
             containerRegistry.RegisterInstance(typeof(IValidatorLoader), ValidatorLoader.GetInstance().Load(currentAssembly));
 
-            //containerRegistry.RegisterNavigations(currentAssembly);
+            containerRegistry.RegisterNavigations(currentAssembly);
         }
 
         public override void OnInitialized(IContainerProvider containerProvider)

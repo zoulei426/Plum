@@ -9,6 +9,7 @@
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:i18n="clr-namespace:Plum.Windwos.Localization;assembly=Plum.Windows.Core"
              xmlns:ctls="clr-namespace:Plum.Windows.Controls;assembly=Plum.Windows.Controls"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              d:DesignHeight="450"
              d:DesignWidth="800"
              mc:Ignorable="d">

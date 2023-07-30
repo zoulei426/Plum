@@ -1,4 +1,12 @@
 {
   "Library": "动态库",
-  "Library List": "动态库列表"
+  "Library List": "动态库列表",
+  "Library Detail": "动态库详情",
+  "Basic Information": "基本信息",
+  "Api List": "接口列表",
+  "Detail": "详情",
+  "Install": "安装",
+  "Update": "更新",
+  "Uninstall": "卸载",
+  "Back": "返回"
 }
