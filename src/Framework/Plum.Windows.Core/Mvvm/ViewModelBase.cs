@@ -440,6 +440,31 @@ namespace Plum.Windows.Mvvm
         //    var m = Activator.CreateInstance(attr.Type, args) as ViewModelBase;
         //    return m;
         //}
+        protected virtual void TaskAlert(object sender, Tasks.TaskAlertEventArgs e)
+        {
+            switch (e.Grade)
+            {
+                case eMessageGrade.Infomation:
+                    Notifier.Info(e.Description);
+                    Logger.Infomation(e.Description);
+                    break;
+
+                case eMessageGrade.Warn:
+                    Notifier.Warning(e.Description);
+                    Logger.Warning(e.Description);
+                    break;
+
+                case eMessageGrade.Error:
+                    Notifier.Error(e.Description);
+                    Logger.Error(e.Description);
+                    break;
+
+                case eMessageGrade.Success:
+                    Notifier.Success(e.Description);
+                    Logger.Infomation(e.Description);
+                    break;
+            }
+        }
 
         #endregion Methods
     }

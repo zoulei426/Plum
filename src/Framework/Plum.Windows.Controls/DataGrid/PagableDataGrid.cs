@@ -227,7 +227,6 @@ namespace Plum.Windows.Controls
                 {
                     IsBusy = false;
                 });
-
                 ItemsSource = listPaging;
             });
         }

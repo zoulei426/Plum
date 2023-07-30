@@ -1,9 +1,11 @@
-﻿using Plum.Modules.Libraries.Entities;
+﻿using Plum.Modules.Libraries.Consts;
+using Plum.Modules.Libraries.Entities;
 using Plum.Modules.Libraries.Models;
 using Plum.Object;
 using Plum.Windows.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,8 +29,8 @@ namespace Plum.Modules.Libraries.Data
         public DataColumn[] GetProperties()
         {
             return typeof(LibraryDvo).GetDataColumnsInclude<LibraryDvo>(
-                x => x.DllId, x => x.DllCode, x => x.DllVersion, x => x.DllUnitName,
-                x => x.DllDesc, x => x.DllClzName
+                x => x.DllCode, x => x.DllVersion, x => x.DllUnitName,
+                x => x.DllDesc, x => x.DllClzName, x => x.LocalVersion, x => x.Status
                 ).ToArray();
         }
 
@@ -46,7 +48,16 @@ namespace Plum.Modules.Libraries.Data
             }
 
             var list = libRepo.Page(pageIndex, pageSize, sorting, filter);
-            return new Paged(count, list.ConvertAll(x => x.ConvertTo<LibraryDvo>().CastTo<object>()));
+            var result = new List<LibraryDvo>(list.Count);
+
+            foreach (var item in list)
+            {
+                var libInfo = item.ConvertTo<LibraryDvo>();
+                libInfo.Refresh();
+                result.Add(libInfo);
+            }
+
+            return new Paged(count, result.ConvertAll(x => x.CastTo<object>()));
         }
     }
 }

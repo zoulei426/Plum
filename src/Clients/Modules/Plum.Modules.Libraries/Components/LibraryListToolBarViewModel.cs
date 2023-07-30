@@ -12,6 +12,17 @@ using static Plum.Modules.Libraries.Events.EventCenter;
 using System.Windows.Input;
 using PropertyChanged;
 using Plum.Windows.Commands;
+using Downloader;
+using Plum.Tools;
+using Plum.Windows;
+using System.IO;
+using System.ComponentModel;
+using System.Windows.Forms;
+using Plum.Modules.Libraries.Tasks;
+using Plum.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Plum.Modules.Libraries.Entities;
+using Prism.Services.Dialogs;
 
 namespace Plum.Modules.Libraries.Components
 {
@@ -21,6 +32,12 @@ namespace Plum.Modules.Libraries.Components
         #region Commands
 
         public ICommand DetailCommand { get; set; }
+
+        public ICommand InstallCommand { get; set; }
+
+        public ICommand UpdateCommand { get; set; }
+
+        public ICommand UninstallCommand { get; set; }
 
         #endregion Commands
 
@@ -38,7 +55,10 @@ namespace Plum.Modules.Libraries.Components
         {
             base.RegisterCommands();
 
-            DetailCommand = new RelayCommand(ExecuteDetail, CanDetail);
+            DetailCommand = new RelayCommand(OnDetail, CanDetail);
+            InstallCommand = new RelayCommand(OnInstall, CanInstall);
+            UpdateCommand = new RelayCommand(OnUpdate, CanUpdate);
+            UninstallCommand = new RelayCommand(OnUninstall, CanUninstall);
         }
 
         private bool CanDetail()
@@ -46,7 +66,7 @@ namespace Plum.Modules.Libraries.Components
             return SelectedItem is not null;
         }
 
-        private void ExecuteDetail()
+        private void OnDetail()
         {
             //await ShowObjectDialog($"动态库详情", SelectedItem, async args =>
             //{
@@ -63,6 +83,70 @@ namespace Plum.Modules.Libraries.Components
             Navigate(RegionNames.LIBRARY_MAIN_CONTENT,
                 typeof(LibraryDetailPanel).FullName,
                 null, new NavigationParameters { { NavParamKeys.CURRENT_LIBRARY, SelectedItem } });
+        }
+
+        private bool CanInstall()
+        {
+            return SelectedItem is not null && SelectedItem.Status == LibraryStatus.Uninstalled;
+        }
+
+        private void OnInstall()
+        {
+            var url = SelectedItem.DllTargetPath;
+            var savePath = Path.Combine(SystemPath.Data);
+            var installPath = Path.Combine(LibraryConsts.LIBRARY_PATH, SelectedItem.DllCode, SelectedItem.DllVersion);
+
+            var args = new InstallLibraryTaskArgument
+            {
+                Library = SelectedItem,
+                Url = url,
+                SavePath = savePath,
+                InstallPath = installPath,
+            };
+            var task = new InstallLibraryTask
+            {
+                Argument = args
+            };
+
+            task.Alert += TaskAlert;
+            task.Completed += TaskCompleted;
+            task.StartAsync();
+        }
+
+        private void TaskCompleted(object sender, TaskCompletedEventArgs e)
+        {
+            var args = e.Argument as InstallLibraryTaskArgument;
+            if (args != null)
+            {
+                args.Library.Refresh();
+            }
+        }
+
+        private bool CanUpdate()
+        {
+            return SelectedItem is not null && SelectedItem.Status == LibraryStatus.Renewable;
+        }
+
+        private void OnUpdate()
+        {
+            OnInstall();
+        }
+
+        private bool CanUninstall()
+        {
+            return SelectedItem is not null && SelectedItem.Status >= LibraryStatus.Installed;
+        }
+
+        private async void OnUninstall()
+        {
+            await ShowConfirmDialogAsync(null, async dialogResult =>
+            {
+                if (dialogResult.Result == ButtonResult.OK || dialogResult.Result == ButtonResult.Yes)
+                {
+                    Directory.Delete(SelectedItem.LocalPath, true);
+                    SelectedItem.Refresh();
+                }
+            });
         }
 
         #endregion Methods

@@ -32,7 +32,14 @@ namespace Plum
 
         public static List<DataColumn> GetDataColumnsInclude(this Type type, params string[] includedColumns)
         {
-            return type.GetDataColumns().Where(x => includedColumns.Contains(x.PropertyName)).ToList();
+            var result = new List<DataColumn>();
+            var columnDic = type.GetDataColumns().ToDictionary(k => k.PropertyName, v => v);
+            foreach (var includedColumn in includedColumns)
+            {
+                if (columnDic.ContainsKey(includedColumn))
+                    result.Add(columnDic[includedColumn]);
+            }
+            return result;
         }
 
         public static List<DataColumn> GetDataColumnsInclude<T>(this Type type, params Expression<Func<T, object>>[] includedColumns)

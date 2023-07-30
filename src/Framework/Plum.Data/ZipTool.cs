@@ -8,7 +8,7 @@ namespace Plum
 {
     public class ZipTool
     {
-        public static void DeCompress(string zipFile, string resultPath, Action<string, double, double> progress = null)
+        public static void DeZip(string zipFile, string resultPath, Action<string, double, double> progress = null)
         {
             if (!File.Exists(zipFile))
             {
@@ -71,14 +71,14 @@ namespace Plum
                 }
             }
 
-            progress(string.Empty, 100, 100);
+            progress?.Invoke(string.Empty, 100, 100);
         }
 
-        public static async Task DeCompressAsync(string zipFile, string resultPath, Action<string, double, double> progress = null)
+        public static async Task DeZipAsync(string zipFile, string resultPath, Action<string, double, double> progress = null)
         {
             await Task.Run(() =>
             {
-                DeCompress(zipFile, resultPath, progress);
+                DeZip(zipFile, resultPath, progress);
             });
         }
     }

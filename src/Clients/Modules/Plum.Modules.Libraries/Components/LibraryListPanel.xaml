@@ -16,7 +16,7 @@
     <hc:TransitioningContentControl>
         <Grid>
             <ctls:PagableDataGrid x:Name="pdg"
-                                  DataSource="{Binding DataSource}"
+                                  DataSource="{Binding DataSource, Mode=TwoWay}"
                                   SelectedItem="{Binding SelectedItem, Mode=TwoWay}" />
         </Grid>
     </hc:TransitioningContentControl>

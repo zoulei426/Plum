@@ -18,19 +18,20 @@ namespace Plum.Modules.Libraries.Entities
     {
         [Key]
         [Column("dll_id")]
-        [Description("控件id")]
+        [Description("库ID")]
         public long DllId { get; set; }
 
+        [Enabled(false)]
         [Column("org_id")]
-        [Description("机构id")]
+        [Description("机构ID")]
         public long OrgId { get; set; }
 
         [Column("dll_code")]
-        [Description("控件代码")]
+        [Description("库代码")]
         public string? DllCode { get; set; }
 
         [Column("dll_version")]
-        [Description("dll包版本")]
+        [Description("库版本")]
         public string? DllVersion { get; set; }
 
         [Column("dll_unit_name")]
@@ -38,7 +39,7 @@ namespace Plum.Modules.Libraries.Entities
         public string? DllUnitName { get; set; }
 
         [Column("dll_call_name")]
-        [Description("调用id名")]
+        [Description("调用名")]
         public string? DllCallName { get; set; }
 
         [Column("dll_desc")]
@@ -50,9 +51,10 @@ namespace Plum.Modules.Libraries.Entities
         public string? DllClzName { get; set; }
 
         [Column("dll_clz_method")]
-        [Description("类中的方法")]
+        [Description("类方法")]
         public string? DllClzMethods { get; set; }
 
+        [Enabled(false)]
         [Column("dll_path")]
         [Description("路径")]
         public string? DllPath { get; set; }
@@ -65,16 +67,19 @@ namespace Plum.Modules.Libraries.Entities
         [Description("是否激活")]
         public int DllActive { get; set; }
 
+        [Enabled(false)]
         [Column("dll_target_ip")]
-        [Description("目标地址ip")]
+        [Description("目标地址IP")]
         public string? DllTargetIp { get; set; }
 
+        [Enabled(false)]
         [Column("dll_target_port")]
         [Description("目标地址端口")]
         public string? DllTargetPort { get; set; }
 
+        [Enabled(false)]
         [Column("dll_target_path")]
-        [Description("dll文件路径")]
+        [Description("库文件路径")]
         public string? DllTargetPath { get; set; }
     }
 }

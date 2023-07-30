@@ -3,8 +3,7 @@
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:local="clr-namespace:iMedical"
               xmlns:prism="http://prismlibrary.com/"
-              xmlns:apps="clr-namespace:Plum.Windows.Apps;assembly=Plum.Windows.Apps"
-              StartupUri="MainWindow.xaml">
+              xmlns:apps="clr-namespace:Plum.Windows.Apps;assembly=Plum.Windows.Apps">
     <Application.Resources>
         <ResourceDictionary>
 
