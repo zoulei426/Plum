@@ -2,7 +2,7 @@
 using System.Windows;
 using Plum.Windows.Apps;
 
-namespace iMedical
+namespace iMedicalClient
 {
     /// <summary>
     /// Interaction logic for App.xaml

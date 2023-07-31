@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plum.Windows.Core", "src\Fr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plum.Desktop", "src\Clients\Plum.Desktop\Plum.Desktop.csproj", "{CDD310D1-EE8A-4A62-BC14-53C15E01F968}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iMedical", "src\Clients\iMedical\iMedical.csproj", "{12991965-EA61-43F3-9139-167CDD33EEFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iMedicalClient", "src\Clients\iMedicalClient\iMedicalClient.csproj", "{12991965-EA61-43F3-9139-167CDD33EEFB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plum.Windows.Apps", "src\Framework\Plum.Windows.Apps\Plum.Windows.Apps.csproj", "{665DFCFE-E6CC-46ED-9FDE-70BF5997AAF0}"
 EndProject
